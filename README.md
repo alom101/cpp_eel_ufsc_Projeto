@@ -1,5 +1,9 @@
 # Projeto de C++ para Embarcados: Leitura de Sensores e Envio de Dados para Servidor
 
+Alunos:
+Arthur Leones Osorio Machado - 19103415
+Pedro Felipe Bender - 20150153
+
 ## Introdução
 
 Este projeto visa desenvolver um software em C++ para um microcontrolador que leia dados de sensores e os envie para um servidor. Caso o servidor esteja fora de alcance, o software armazenará os dados localmente e os enviará posteriormente. O foco do projeto será no desenvolvimento do software, utilizando técnicas de programação orientada a objetos (POO) e abordando os seguintes tópicos:
