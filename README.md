@@ -26,13 +26,13 @@ Este projeto visa desenvolver uma interface genérica em C++ que leia dados de s
 *   Dispositivo para receber os dados
 
 
----------- EM CONSTRUÇÂO ------------
 
-## Arquitetura do Software
+## Implementação
 
 O software será dividido em três partes principais:
 
 ### SensorUFSC.h
+---
 Neste arquivo está todas as definições de interface necessárias para o uso do projeto. Ele foi pensado para ser o único #include necessário. Neste arquivo estarão as definições de:
 
 
@@ -69,7 +69,6 @@ char sensor_type[20] = data.sensor_type(); // ex: DS18B20
 chat sensor_name[20] = data.sensor_name(); // ex: Temperatura da sala
 ```
 
-## Implementação
 
 
 
