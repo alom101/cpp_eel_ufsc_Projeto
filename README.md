@@ -35,22 +35,18 @@ O software será dividido em três partes principais:
 ### SensorUFSC.h
 Neste arquivo está todas as definições de interface necessárias para o uso do projeto. Ele foi pensado para ser o único #include necessário. Neste arquivo estarão as definições de:
 
-```
+
+#### classe Sensor
+```cpp
 // Proposta de uso
 sensor = Sensor(); // alguma implementação concreta da classe
 Measurement data = sensor.read();
 ```
 
-##### Implementação de um novo sensor
-Para criar um novo sensor, deve-se herdar esta classe e implementar os métodos virtuais.
-
-[TODO: quando implementado, descrever cada metodo]
-
-
 #### classe DataOutput
 Esta classe será utilizada como interface de saida de dados, independentemente se estes dados irão para a memória local, um cartão SD ou um servidor.
 
-```
+```cpp
 // Proposta de uso
 dout = DataOutput(); // alguma implementação concreta da classe
 
@@ -58,13 +54,29 @@ Measurement data = sensor.read();
 dout.save(data);
 ```
 
-##### Implementação de uma nova saida de dados
+#### classe Measurement
+Esta classe irá encapsular as medidas. Ela agrupará a medida, o timestamp e metadados, quando disponíveis.
 
-[TODO: quando implementado, descrever cada metodo]
+```cpp
+// Proposta de uso
+Measurement data = sensor.read();
+
+float valor = data.value();
+time_t timestamp = data.timestamp();
+
+// alguns metadados
+char sensor_type[20] = data.sensor_type(); // ex: DS18B20
+chat sensor_name[20] = data.sensor_name(); // ex: Temperatura da sala
+```
 
 ## Implementação
 
 
-## Resultados Esperados
+
+## Plano de testes
+
+Para testes, implementaremos duas classes de testes: 
+*   FakeSensor: Cria medidas em uma sequencia predefinida. Será utilizada para testar saidas de dados;
+*   FakeOutput: Printa dados no terminal;
 
 
