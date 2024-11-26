@@ -35,11 +35,11 @@ O software será dividido em três partes principais:
 ### SensorUFSC.h
 Neste arquivo está todas as definições de interface necessárias para o uso do projeto. Ele foi pensado para ser o único #include necessário. Neste arquivo estarão as definições de:
 
-´´´
+```
 // Proposta de uso
 sensor = Sensor(); // alguma implementação concreta da classe
 Measurement data = sensor.read();
-´´´
+```
 
 ##### Implementação de um novo sensor
 Para criar um novo sensor, deve-se herdar esta classe e implementar os métodos virtuais.
@@ -50,13 +50,13 @@ Para criar um novo sensor, deve-se herdar esta classe e implementar os métodos 
 #### classe DataOutput
 Esta classe será utilizada como interface de saida de dados, independentemente se estes dados irão para a memória local, um cartão SD ou um servidor.
 
-´´´
+```
 // Proposta de uso
 dout = DataOutput(); // alguma implementação concreta da classe
 
 Measurement data = sensor.read();
 dout.save(data);
-´´´
+```
 
 ##### Implementação de uma nova saida de dados
 
