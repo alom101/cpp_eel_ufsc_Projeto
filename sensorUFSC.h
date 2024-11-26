@@ -2,6 +2,7 @@
 #define SENSORUFSC_H
 
 #include "config.h"
+#include <ctime>
 
 class Sensor;
 class DataOutput;
@@ -43,6 +44,7 @@ protected:
   Sensor* from_sensor = 0;
 public:
   float value();
+  time_t timestamp();
   char* sensor_type();
   char* sensor_name();
 };
