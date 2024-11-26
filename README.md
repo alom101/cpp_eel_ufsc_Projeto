@@ -29,7 +29,6 @@ Este projeto visa desenvolver uma interface genérica em C++ que leia dados de s
 
 ## Implementação
 
-O software será dividido em três partes principais:
 
 ### SensorUFSC.h
 ---
