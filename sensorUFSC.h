@@ -1,6 +1,7 @@
 #ifndef SENSORUFSC_H
 #define SENSORUFSC_H
 
+
 class Sensor;
 class DataOutput;
 class Measurement;
@@ -9,50 +10,36 @@ class Measurement;
 
 // Interface abstrata para sensores
 class Sensor{
-private:
-
-protected:
-
 public:
   // CORE
-  Measurement read();
+  virtual Measurement read() = 0;
 
   // METADATA
-  char* sensor_type();
-  char* sensor_name();
-  
+  virtual char* sensor_type();
+  virtual char* sensor_name();
 };
 
 
 // Interface abstrata para saida de dados
 class DataOutput{
-private:
-
-protected:
-
 public:
-  int save(Measurement data);
+  virtual int save(Measurement data) = 0;
 };
 
 
 
 // Realiza medidas e as salva de forma peroódica(talvez generalizar essa parte por um objeto MeasurementStrategy ou algo assim)
 class Scheduler{
-private:
-
-protected:
-
 public:
   Scheduler(Sensor* sensor, DataOutput* output, float sample_rate);
+  int update();
 };
 
 
 // Encapsula a medida, para facilitar alterações. Também disponibiliza alguns metadados.
 class Measurement{
-private:
-
 protected:
-
+  Sensor* from_sensor = 0;
 public:
   float value();
   char* sensor_type();
