@@ -1,6 +1,7 @@
 #ifndef SENSORUFSC_H
 #define SENSORUFSC_H
 
+#include "config.h"
 
 class Sensor;
 class DataOutput;
