@@ -27,6 +27,9 @@ Este projeto visa desenvolver uma interface genérica em C++ que leia dados de s
 
 # Implementação
 
+## Diagrama de classes 
+
+![image](https://github.com/user-attachments/assets/f3869a40-941c-43af-9b8e-86f24783d33c)
 
 ## SensorUFSC.h
 Neste arquivo está todas as definições de interface necessárias para o uso do projeto. Ele foi pensado para ser o único `#include` necessário. Neste arquivo estarão as definições de:
@@ -89,5 +92,11 @@ int data = hal.i2c_read()
 Para testes, implementaremos duas classes de testes: 
 *   FakeSensor: Cria medidas em uma sequencia predefinida. Será utilizada para testar saidas de dados;
 *   FakeOutput: Printa dados no terminal;
+Para testes em bancada será feito um servidor com um computador host e o microcontrolador ESP32 fará envios de leitura de
+um sensor real para o sitema. Os seguintes pontos serão testados para validação da robustez do sistema.
+  * Armazenamento em LOG se ocorrer falha na comunicação da placa com o servidor, com posterior envio de dados quando ocorrer a reconexão.
+  * Teste de sensores variados para verificar calibração e taxa máxima de envio de dados sem perder a conexão ou quando o LOG estiver cheio.
+
+
 
 
