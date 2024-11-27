@@ -50,4 +50,13 @@ public:
 };
 
 
+// Interface para interação com o hardware
+class HAL{
+public:
+  virtual float analog_read(int analog_pin);
+  virtual int digital_read(int digital_pin);
+  virtual int digital_write(int digital_pin);
+};
+
+
 #endif // !SENSORUFSC_H
