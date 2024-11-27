@@ -25,6 +25,9 @@ Este projeto visa desenvolver uma interface genérica em C++ que leia dados de s
 *   Sensores;
 *   Dispositivo para receber os dados
 
+## Diagrama de classes 
+
+![image](https://github.com/user-attachments/assets/f3869a40-941c-43af-9b8e-86f24783d33c)
 
 
 ## Implementação
