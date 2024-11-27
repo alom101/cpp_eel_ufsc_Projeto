@@ -81,8 +81,8 @@ Para testes, implementaremos duas classes de testes:
 *   FakeOutput: Printa dados no terminal;
 Para testes em bancada será feito um servidor com um computador host e o microcontrolador ESP32 fará envios de leitura de
 um sensor real para o sitema. Os seguintes pontos serão testados para validação da robustez do sistema.
-  • Armazenamento em LOG se ocorrer falha na comunicação da placa com o servidor, com posterior envio de dados quando ocorrer a reconexão.
-  • Teste de sensores variados para verificar calibração e taxa máxima de envio de dados sem perder a conexão ou quando o LOG estiver cheio.
+  * Armazenamento em LOG se ocorrer falha na comunicação da placa com o servidor, com posterior envio de dados quando ocorrer a reconexão.
+  * Teste de sensores variados para verificar calibração e taxa máxima de envio de dados sem perder a conexão ou quando o LOG estiver cheio.
 
 
 
