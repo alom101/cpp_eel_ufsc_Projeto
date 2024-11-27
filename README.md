@@ -6,43 +6,40 @@ Arthur Leones Osorio Machado - 19103415
 
 Pedro Felipe Bender - 20150153
 
-## Introdução
+# Introdução
 
 Este projeto visa desenvolver uma interface genérica em C++ que leia dados de sensores e os envie para um servidor ou dispositivo de armazenamento utilizando técnicas de programação orientada a objetos (POO) e abordando os seguintes tópicos:
 
 *   Definição de sensores utilizando herança, polimorfismo e sobrecarga;
 *   Abstração da relação sensor-armazenamento utilizando classes abstratas;
 
-## Objetivos
+# Objetivos
 
 *   Desenvolvimento de uma classe Sensor que abstraia os detalhes de cada sensor, permitindo que o software seja desenvolvido utilizando uma interface em comum para obtenção de dados;
 *   Desenvolvimento de uma classe DataOutput que abstraia os dispositivos de armazenamento e servidores externos, permitindo sua substituição sem mudanças de código;
 *   Desenvolvimento de um software independente do hardware, permitindo a utilização de diferentes microcontroladores (ESP32, ESP8266, Raspberry Pi Pico W) com minima modificação.
 
-## Requisitos
+# Requisitos
 
 *   Microcontrolador;
 *   Sensores;
-*   Dispositivo para receber os dados
+*   Dispositivo para receber os dados.
+
+# Implementação
 
 
-
-## Implementação
-
-
-### SensorUFSC.h
----
-Neste arquivo está todas as definições de interface necessárias para o uso do projeto. Ele foi pensado para ser o único #include necessário. Neste arquivo estarão as definições de:
+## SensorUFSC.h
+Neste arquivo está todas as definições de interface necessárias para o uso do projeto. Ele foi pensado para ser o único `#include` necessário. Neste arquivo estarão as definições de:
 
 
-#### classe Sensor
+### classe Sensor
 ```cpp
 // Proposta de uso
 sensor = Sensor(); // alguma implementação concreta da classe
 Measurement data = sensor.read();
 ```
 
-#### classe DataOutput
+### classe DataOutput
 Esta classe será utilizada como interface de saida de dados, independentemente se estes dados irão para a memória local, um cartão SD ou um servidor.
 
 ```cpp
@@ -53,7 +50,7 @@ Measurement data = sensor.read();
 dout.save(data);
 ```
 
-#### classe Measurement
+### classe Measurement
 Esta classe irá encapsular as medidas. Ela agrupará a medida, o timestamp e metadados, quando disponíveis.
 
 ```cpp
@@ -65,13 +62,29 @@ time_t timestamp = data.timestamp();
 
 // alguns metadados
 char sensor_type[20] = data.sensor_type(); // ex: DS18B20
-chat sensor_name[20] = data.sensor_name(); // ex: Temperatura da sala
+chat sensor_name[20] = data.sensor_name(); // ex: Sensor de temperatura da sala
+```
+
+### classe HAL
+Esta classe serve de interface para o hardware. Todas as interações com o hardware passarão por ela. Dessa forma, para portarmos o código para um microcontrolador diferente, basta herdar e implementar a classe HAL correta.
+
+
+```cpp
+// Proposta de uso
+
+HAL hal = HAL();// alguma implementação concretera da classe
+
+float value = hal.analog_read(5); // retorna a leitura analógica do pino 5
+
+hal.i2c_write(0xAA);
+int data = hal.i2c_read()
 ```
 
 
+## HAL.cpp
 
 
-## Plano de testes
+# Plano de testes
 
 Para testes, implementaremos duas classes de testes: 
 *   FakeSensor: Cria medidas em uma sequencia predefinida. Será utilizada para testar saidas de dados;
