@@ -107,8 +107,8 @@ Para seu funcionamento é necessário o microcontrolador realizar a conversão a
 
 ```cpp
 // Proposta de uso
-sensor \= Sensor(); // alguma implementação concreta da classe
-Measurement data \= sensor.read();
+sensor = Sensor(); // alguma implementação concreta da classe
+Measurement data = sensor.read();
 ```
 
 ### **classe DataOutput**
@@ -117,9 +117,9 @@ Esta classe será utilizada como interface de saida de dados, independentemente 
 
 ```cpp
 // Proposta de uso
-dout \= DataOutput(); // alguma implementação concreta da classe
+dout = DataOutput(); // alguma implementação concreta da classe
 
-Measurement data \= sensor.read();
+Measurement data = sensor.read();
 dout.save(data);
 ```
 
@@ -129,14 +129,14 @@ Esta classe irá encapsular as medidas. Ela agregará a medida, o timestamp e me
 
 ```cpp
 // Proposta de uso
-Measurement data \= sensor.read();
+Measurement data = sensor.read();
 
-float valor \= data.value();
-time\_t timestamp \= data.timestamp();
+float valor = data.value();
+time_t timestamp = data.timestamp();
 
-// alguns metadados*  
-char sensor\_type\[20\] \= data.sensor\_type(); // ex: DS18B20
-chat sensor\_name\[20\] \= data.sensor\_name(); // ex: Sensor de temperatura da sala
+// alguns metadados  
+char sensor_type[20] = data.sensor_type(); // ex: DS18B20
+chat sensor_name[20] = data.sensor_name(); // ex: Sensor de temperatura da sala
 ```
 
 ### **classe HAL**
@@ -146,12 +146,12 @@ Esta classe serve de interface para o hardware. Todas as interações com o hard
 ```cpp
 // Proposta de uso
 
-HAL hal \= HAL();// alguma implementação concreta da classe
+HAL hal = HAL();// alguma implementação concreta da classe
 
-float value \= hal.analog\_read(5); // retorna a leitura analógica do pino 5
+float value = hal.analog_read(5); // retorna a leitura analógica do pino 5
 
-hal.i2c\_write(0xAA);
-int data \= hal.i2c\_read()
+hal.i2c_write(0xAA);
+int data = hal.i2c_read()
 ```
 
 # **Plano de testes**
