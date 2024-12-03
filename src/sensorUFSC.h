@@ -1,8 +1,8 @@
 #ifndef SENSORUFSC_H
 #define SENSORUFSC_H
 
-#include "config.h"
 #include <ctime>
+#include "config.h"
 
 class Sensor;
 class DataOutput;
@@ -13,15 +13,26 @@ class Measurement;
 // Interface abstrata para sensores
 class Sensor{
 protected:
-  char _sensor_name[20] = "Unamed sensor";
-  char _sensor_type[20] = "Unknown type";
+  char _sensor_name[20];
+  char _sensor_type[20];
+  void set_sensor_type(char* new_type);
+  Sensor();
 public:
   // CORE
-  virtual Measurement read();
+  virtual Measurement read() = 0;
 
   // METADATA
+  void set_sensor_name(char* new_name);
   char* sensor_type();
   char* sensor_name();
+};
+
+class FakeSensor: public Sensor{
+protected:
+  float _value;
+public:
+  FakeSensor(float fixed_return_value);
+  Measurement read();
 };
 
 
@@ -51,6 +62,7 @@ public:
   Measurement(Sensor* sensor, float value, time_t timestamp);
   float value();
   time_t timestamp();
+  // METADATA
   char* sensor_type();
   char* sensor_name();
 };
