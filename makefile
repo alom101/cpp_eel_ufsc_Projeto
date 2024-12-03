@@ -1,6 +1,6 @@
 
 all:
-	g++ *.cpp -o out
+	g++ src/*.cpp -o out
 
 clean:
 	rm out

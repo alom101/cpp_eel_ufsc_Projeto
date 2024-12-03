@@ -30,7 +30,7 @@ public:
 
 
 
-// Realiza medidas e as salva de forma peroódica(talvez generalizar essa parte por um objeto MeasurementStrategy ou algo assim)
+// Realiza medidas e as salva de forma periódica(talvez generalizar essa parte por um objeto MeasurementStrategy ou algo assim)
 class Scheduler{
 public:
   Scheduler(Sensor* sensor, DataOutput* output, float sample_rate);

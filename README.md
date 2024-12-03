@@ -101,7 +101,7 @@ Para seu funcionamento é necessário o microcontrolador realizar a conversão a
 
 ## **Diagrama de classes**
 
-![Diagrama UML](https://github.com/alom101/cpp_eel_ufsc_Projeto/blob/main/UML.png)
+![Diagrama UML](https://github.com/alom101/cpp_eel_ufsc_Projeto/blob/main/docs/UML.png)
 
 ### **classe Sensor**
 
