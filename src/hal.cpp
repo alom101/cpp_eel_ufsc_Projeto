@@ -1,5 +1,5 @@
 #include "sensorUFSC.h"
-
+#include <ctime>
 
 /*************************************************************
  *                        FAKE HAL 
@@ -17,7 +17,7 @@ int HAL_FAKE::digital_write(int digital_pin){
 }
 
 time_t HAL_FAKE::time(){
-  return time();
+  return std::time(0); // CUIDADO: sem o "std::" ele vira uma função recursiva!!
 }
 
 

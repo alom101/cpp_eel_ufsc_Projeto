@@ -20,6 +20,7 @@ class Sensor{
 protected:
   char _sensor_name[SENSOR_NAME_LEN];
   char _sensor_type[SENSOR_TYPE_LEN];
+  HAL* _hal = 0;
   void set_sensor_type(char* new_type);
   Sensor();
 public:
@@ -37,13 +38,12 @@ class FakeSensor: public Sensor{
 protected:
   float _value;
 public:
-  FakeSensor(float fixed_return_value);
+  FakeSensor(HAL* hal, float fixed_return_value);
   Measurement read();
 };
 
 class AnalogReadSensor: public Sensor{
 protected:
-  HAL* _hal;
   int _pin;
 public:
   AnalogReadSensor(HAL* hal, int analog_pin);
