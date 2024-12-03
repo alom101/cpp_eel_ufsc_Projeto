@@ -111,6 +111,31 @@ public:
   virtual time_t time() = 0;
 };
 
+// ifdefs
+
+#ifdef TARGET_FAKE
+#define HAL_DEFAULT HAL_FAKE
+#endif // TARGET_FAKE
+
+#ifdef TARGET_ESP32
+#define HAL_DEFAULT HAL_ESP32
+#endif // TARGET_ESP32
+
+#ifdef TARGET_ATMEGA
+#define HAL_DEFAULT HAL_ATMEGA
+#endif // TARGET_ATMEGA
+
+
+// Implementações
+class HAL_FAKE: public HAL{
+public:
+  float analog_read(int analog_pin);
+  int digital_read(int digital_pin);
+  int digital_write(int digital_pin);
+  time_t time();
+};
+
+
 class HAL_ATMEGA: public HAL{
 public:
   float analog_read(int analog_pin);
@@ -118,6 +143,16 @@ public:
   int digital_write(int digital_pin);
   time_t time();
 };
+
+
+class HAL_ESP32: public HAL{
+public:
+  float analog_read(int analog_pin);
+  int digital_read(int digital_pin);
+  int digital_write(int digital_pin);
+  time_t time();
+};
+
 
 
 #endif // !SENSORUFSC_H

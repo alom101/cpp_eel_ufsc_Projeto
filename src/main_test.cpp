@@ -5,7 +5,7 @@
 
 int main (int argc, char *argv[]) {
   // Sensor* sensor = new FakeSensor(10.1);
-  HAL* hal = new HAL_ATMEGA();
+  HAL* hal = new HAL_DEFAULT();
   Sensor* sensor = new AnalogReadSensor(hal, 6);
   char nome_do_sensor[] = "Sensor de testes";
   sensor->set_sensor_name(nome_do_sensor);
