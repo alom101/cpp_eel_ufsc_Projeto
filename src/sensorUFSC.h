@@ -2,6 +2,7 @@
 #define SENSORUFSC_H
 
 #include <ctime>
+#include <cstdio>
 #include "config.h"
 
 class Sensor;
@@ -59,6 +60,11 @@ public:
   virtual int save(Measurement data) = 0;
 };
 
+class PrintOutput: public DataOutput{
+public:
+  PrintOutput();
+  int save(Measurement data);
+};
 
 /*************************************************************
  *                    SCHEDULER
