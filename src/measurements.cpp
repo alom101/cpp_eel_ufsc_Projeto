@@ -22,4 +22,3 @@ char* Measurement::sensor_name(){
 char* Measurement::sensor_type(){
   return _sensor->sensor_type();
 }
-

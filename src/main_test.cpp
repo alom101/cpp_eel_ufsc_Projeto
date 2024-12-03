@@ -11,8 +11,11 @@ int main (int argc, char *argv[]) {
 
   for(int i=0; i<5; i++){
     Measurement m = s->read();
-    time_t t = m.timestamp(); 
-    printf("%d)Medida %f feita em %s do tipo %s em %s\n", i, m.value(), m.sensor_name(), m.sensor_type(), ctime(&t));
+
+    // time_t t = m.timestamp(); 
+    // printf("%d)Medida %f feita em %s do tipo %s em %s\n", i, m.value(), m.sensor_name(), m.sensor_type(), ctime(&t));
+    
+    printf("%d) %s", i, m.to_string());
   }
   return 0;
 }

@@ -11,6 +11,9 @@ class HAL;
 // class MeasurementStrategy;
 
 
+/*************************************************************
+ *                    SENSORES
+*************************************************************/
 // Interface abstrata para sensores
 class Sensor{
 protected:
@@ -28,6 +31,7 @@ public:
   char* sensor_name();
 };
 
+// Simula um sensor. Realiza sempre a mesma medida
 class FakeSensor: public Sensor{
 protected:
   float _value;
@@ -46,6 +50,9 @@ public:
 };
 
 
+/*************************************************************
+ *                    DATA OUTPUT
+*************************************************************/
 // Interface abstrata para saida de dados
 class DataOutput{
 public:
@@ -53,7 +60,9 @@ public:
 };
 
 
-
+/*************************************************************
+ *                    SCHEDULER
+*************************************************************/
 // Realiza medidas e as salva de forma periódica(talvez generalizar essa parte por um objeto MeasurementStrategy ou algo assim)
 class Scheduler{
 public:
@@ -62,6 +71,9 @@ public:
 };
 
 
+/*************************************************************
+ *                    MEASUREMENT
+*************************************************************/
 // Encapsula a medida, para facilitar alterações. Também disponibiliza alguns metadados.
 class Measurement{
 protected:
@@ -73,11 +85,16 @@ public:
   float value();
   time_t timestamp();
   // METADATA
-  char* sensor_type();
+  char* sensor_type(); // ToDo: Analisar se o uso de char* é a melhor opção
   char* sensor_name();
+  // char* to_string();
+  // char* to_csv();
 };
 
 
+/*************************************************************
+ *            HARDWARE ABSTRACTION LAYER
+*************************************************************/
 // Interface para interação com o hardware
 class HAL{
 public:

@@ -28,9 +28,7 @@ char* Sensor::sensor_name(){
 }
 
 
-// Sensores
-
-
+// Fake Sensor
 FakeSensor::FakeSensor(float value){
   char sensor_name[] = "FakeSensor";
   char sensor_type[] = "FakeSensor";
@@ -40,10 +38,11 @@ FakeSensor::FakeSensor(float value){
 }
 
 Measurement FakeSensor::read(){
-    return Measurement(this, _value, time(0));
+    return Measurement(this, _value, time(0)); // ToDo: transferir a responsabilidade de controle de tempo para a classe HAL
   }
 
 
+// Analog Sensor
 AnalogReadSensor::AnalogReadSensor(HAL* hal, int analog_pin){
   char sensor_name[SENSOR_NAME_LEN];
   snprintf(sensor_name, SENSOR_NAME_LEN, "Analog Sensor reading pin %d", analog_pin);
@@ -56,6 +55,6 @@ AnalogReadSensor::AnalogReadSensor(HAL* hal, int analog_pin){
 
 Measurement AnalogReadSensor::read(){
     float value = _hal->analog_read(_pin);
-    time_t now = time(0);
+    time_t now = time(0); // ToDo: transferir a responsabilidade de controle de tempo para a classe HAL
     return Measurement(this, value, now);
   }
