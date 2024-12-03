@@ -1,4 +1,6 @@
+#include "config.h"
 #include "sensorUFSC.h"
+#include <cstdio>
 #include <cstring>
 
 // Sensor (classe abstrata)
@@ -28,12 +30,13 @@ char* Sensor::sensor_name(){
 
 // Sensores
 
+
 FakeSensor::FakeSensor(float value){
   char sensor_name[] = "FakeSensor";
   char sensor_type[] = "FakeSensor";
   set_sensor_name(sensor_name);
   set_sensor_type(sensor_type);
-  _value = value;
+  _value = value; // valor que ele irá repetir nos testes
 }
 
 Measurement FakeSensor::read(){
@@ -41,24 +44,18 @@ Measurement FakeSensor::read(){
   }
 
 
+AnalogReadSensor::AnalogReadSensor(HAL* hal, int analog_pin){
+  char sensor_name[SENSOR_NAME_LEN];
+  snprintf(sensor_name, SENSOR_NAME_LEN, "Analog Sensor reading pin %d", analog_pin);
+  char sensor_type[] = "Analog sensor";
+  set_sensor_name(sensor_name);
+  set_sensor_type(sensor_type);
+  _hal = hal;
+  _pin = analog_pin;
+}
 
-class AnalogReadSensor: public Sensor{
-protected:
-  HAL* _hal;
-  int _pin;
-  char _sensor_name[20] = "Analog sensor";
-  char _sensor_type[20] = "Analog sensor";
-public:
-  AnalogReadSensor(HAL* hal, int analog_pin){
-    _hal = hal;
-    _pin = analog_pin;
-  }
-
-  Measurement read(){
+Measurement AnalogReadSensor::read(){
     float value = _hal->analog_read(_pin);
     time_t now = time(0);
     return Measurement(this, value, now);
   }
-
-};
-

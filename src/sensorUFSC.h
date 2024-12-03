@@ -7,14 +7,15 @@
 class Sensor;
 class DataOutput;
 class Measurement;
+class HAL;
 // class MeasurementStrategy;
 
 
 // Interface abstrata para sensores
 class Sensor{
 protected:
-  char _sensor_name[20];
-  char _sensor_type[20];
+  char _sensor_name[SENSOR_NAME_LEN];
+  char _sensor_type[SENSOR_TYPE_LEN];
   void set_sensor_type(char* new_type);
   Sensor();
 public:
@@ -32,6 +33,15 @@ protected:
   float _value;
 public:
   FakeSensor(float fixed_return_value);
+  Measurement read();
+};
+
+class AnalogReadSensor: public Sensor{
+protected:
+  HAL* _hal;
+  int _pin;
+public:
+  AnalogReadSensor(HAL* hal, int analog_pin);
   Measurement read();
 };
 
