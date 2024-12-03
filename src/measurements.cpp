@@ -1,6 +1,9 @@
 #include "sensorUFSC.h"
 
 
+/*************************************************************
+ *                      MEASUREMENT
+*************************************************************/
 Measurement::Measurement(Sensor* sensor, float value, time_t timestamp){
   _sensor = sensor;
   _value = value;

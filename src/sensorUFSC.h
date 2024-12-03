@@ -60,6 +60,7 @@ public:
   virtual int save(Measurement data) = 0;
 };
 
+
 class PrintOutput: public DataOutput{
 public:
   PrintOutput();
@@ -104,9 +105,18 @@ public:
 // Interface para interação com o hardware
 class HAL{
 public:
-  virtual float analog_read(int analog_pin);
-  virtual int digital_read(int digital_pin);
-  virtual int digital_write(int digital_pin);
+  virtual float analog_read(int analog_pin) = 0;
+  virtual int digital_read(int digital_pin) = 0;
+  virtual int digital_write(int digital_pin)= 0;
+  virtual time_t time() = 0;
+};
+
+class HAL_ATMEGA: public HAL{
+public:
+  float analog_read(int analog_pin);
+  int digital_read(int digital_pin);
+  int digital_write(int digital_pin);
+  time_t time();
 };
 
 

@@ -3,6 +3,9 @@
 #include <cstdio>
 #include <cstring>
 
+/*************************************************************
+ *                     SENSOR (classe abstrata)
+*************************************************************/
 // Sensor (classe abstrata)
 Sensor::Sensor(){
   char sensor_name[] = "desconhecido";
@@ -28,6 +31,9 @@ char* Sensor::sensor_name(){
 }
 
 
+/*************************************************************
+ *                      FAKE SENSOR
+*************************************************************/
 // Fake Sensor
 FakeSensor::FakeSensor(float value){
   char sensor_name[] = "FakeSensor";
@@ -42,7 +48,9 @@ Measurement FakeSensor::read(){
   }
 
 
-// Analog Sensor
+/*************************************************************
+ *                    ANALOG READ SENSOR
+*************************************************************/
 AnalogReadSensor::AnalogReadSensor(HAL* hal, int analog_pin){
   char sensor_name[SENSOR_NAME_LEN];
   snprintf(sensor_name, SENSOR_NAME_LEN, "Analog Sensor reading pin %d", analog_pin);
