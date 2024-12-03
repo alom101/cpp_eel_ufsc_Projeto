@@ -12,13 +12,16 @@ class Measurement;
 
 // Interface abstrata para sensores
 class Sensor{
+protected:
+  char _sensor_name[20] = "Unamed sensor";
+  char _sensor_type[20] = "Unknown type";
 public:
   // CORE
-  virtual Measurement read() = 0;
+  virtual Measurement read();
 
   // METADATA
-  virtual char* sensor_type();
-  virtual char* sensor_name();
+  char* sensor_type();
+  char* sensor_name();
 };
 
 
@@ -41,8 +44,11 @@ public:
 // Encapsula a medida, para facilitar alterações. Também disponibiliza alguns metadados.
 class Measurement{
 protected:
-  Sensor* from_sensor = 0;
+  Sensor* _sensor = 0;
+  time_t _timestamp;
+  float _value;
 public:
+  Measurement(Sensor* sensor, float value, time_t timestamp);
   float value();
   time_t timestamp();
   char* sensor_type();
