@@ -143,6 +143,7 @@ public:
 #endif // TARGET_FAKE
 
 #ifdef TARGET_ESP32
+// #include "esp.h"
 #define HAL_DEFAULT HAL_ESP32
 #endif // TARGET_ESP32
 
