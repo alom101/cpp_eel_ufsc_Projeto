@@ -71,10 +71,25 @@ public:
  *                    SCHEDULER
 *************************************************************/
 // Realiza medidas e as salva de forma periódica(talvez generalizar essa parte por um objeto MeasurementStrategy ou algo assim)
+// Estruturado em formato de linked list
 class Scheduler{
+private:
+  HAL* _hal;
+  Scheduler* _next;
+  float _sample_rate;
+  Sensor* _sensor;
+  DataOutput* _output;
+  time_t _next_measurement_time;
+  //utils
+  Scheduler* get_last_scheduler();
+  int is_time_to_run();
+  int is_empty();
 public:
-  Scheduler(Sensor* sensor, DataOutput* output, float sample_rate);
-  int update();
+  Scheduler(HAL* hal, Sensor* sensor, DataOutput* output, float sample_rate);
+  Scheduler(HAL* hal); // para uso como head da lista (não realiza nenhuma medida)
+  void schedule(Sensor* sensor, DataOutput* output, float sample_rate);
+  void update();
+  void update_all();
 };
 
 
