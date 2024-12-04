@@ -12,6 +12,8 @@ class Measurement;
 class HAL;
 // class MeasurementStrategy;
 
+#define LOW 0
+#define HIGH 1
 
 /*************************************************************
  *                    SENSORES
@@ -47,11 +49,22 @@ public:
 
 class AnalogReadSensor: public Sensor{
 protected:
+  HAL* _hal;
   int _pin;
 public:
   AnalogReadSensor(HAL* hal, int analog_pin);
   Measurement read();
 };
+
+class DigitalReadSensor: public Sensor{
+protected:
+  HAL* _hal;
+  int _pin;
+public:
+  DigitalReadSensor(HAL* hal, int digital_pin);
+  Measurement read();
+};
+
 
 
 /*************************************************************
@@ -60,20 +73,29 @@ public:
 // Interface abstrata para saida de dados
 class DataOutput{
 public:
-  virtual int save(Measurement data) = 0;
+  virtual void save(Measurement data) = 0;
 };
 
 
 class PrintOutput: public DataOutput{
 public:
   PrintOutput();
-  int save(Measurement data);
+  void save(Measurement data);
 };
 
 class SDCardOutput: public DataOutput{
 public:
   SDCardOutput();
-  int save(Measurement data);
+  void save(Measurement data);
+};
+
+class DigitalPinOutput: public DataOutput{
+protected:
+  HAL* _hal;
+  int _pin;
+public:
+  DigitalPinOutput(HAL* hal, int digital_pin);
+  void save(Measurement data);
 };
 
 
@@ -132,7 +154,7 @@ class HAL{
 public:
   virtual float analog_read(int analog_pin) = 0;
   virtual int digital_read(int digital_pin) = 0;
-  virtual int digital_write(int digital_pin)= 0;
+  virtual int digital_write(int value, int digital_pin)= 0;
   virtual time_t time() = 0;
 };
 
@@ -157,7 +179,7 @@ class HAL_FAKE: public HAL{
 public:
   float analog_read(int analog_pin);
   int digital_read(int digital_pin);
-  int digital_write(int digital_pin);
+  int digital_write(int value, int digital_pin);
   time_t time();
 };
 
@@ -166,7 +188,7 @@ class HAL_ATMEGA: public HAL{
 public:
   float analog_read(int analog_pin);
   int digital_read(int digital_pin);
-  int digital_write(int digital_pin);
+  int digital_write(int value, int digital_pin);
   time_t time();
 };
 
@@ -175,7 +197,7 @@ class HAL_ESP32: public HAL{
 public:
   float analog_read(int analog_pin);
   int digital_read(int digital_pin);
-  int digital_write(int digital_pin);
+  int digital_write(int value, int digital_pin);
   time_t time();
 };
 

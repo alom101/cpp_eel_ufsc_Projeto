@@ -2,6 +2,7 @@
 #include "sensorUFSC.h"
 #include <cstdio>
 #include <cstring>
+#include <ctime>
 #include <string>
 
 /*************************************************************
@@ -76,4 +77,24 @@ Measurement AnalogReadSensor::read(){
     float value = _hal->analog_read(_pin);
     time_t now = _hal->time();
     return Measurement(this, value, now);
+}
+
+/*************************************************************
+ *                    DIGITAL READ SENSOR
+*************************************************************/
+
+DigitalReadSensor::DigitalReadSensor(HAL* hal, int digital_pin){
+  char sensor_name[SENSOR_NAME_LEN];
+  snprintf(sensor_name, SENSOR_NAME_LEN, "Digital Sensor reading pin %d", digital_pin);
+  char sensor_type[] = "Digital sensor";
+  set_sensor_name(sensor_name);
+  set_sensor_type(sensor_type);
+  _hal = hal;
+  _pin = digital_pin;
+}
+
+Measurement DigitalReadSensor::read(){
+  int value = _hal->digital_read(_pin);
+  time_t now = _hal->time();
+  return Measurement(this, value, now);
 }

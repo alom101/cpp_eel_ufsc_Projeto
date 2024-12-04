@@ -4,8 +4,8 @@
 int main (int argc, char *argv[]) {
   HAL* hal = new HAL_DEFAULT();
 
-  // DataOutput* output = new PrintOutput();
-  DataOutput* output = new DigitalOutput(5);
+  DataOutput* output = new PrintOutput();
+  // DataOutput* output = new DigitalPinOutput(hal, 5);
 
 
   Sensor* sensor_1 = new FakeSensor(hal, 1.0);
@@ -19,9 +19,9 @@ int main (int argc, char *argv[]) {
 
 
   Scheduler* schedulers = new Scheduler(hal);
-  schedulers->schedule(sensor_1, output, 1);
+  schedulers->schedule(sensor_1, output, .1);
   // schedulers->schedule(sensor_2, output, 1);
-  schedulers->schedule(sensor_digital, output, 1);
+  schedulers->schedule(sensor_digital, output, .2);
 
   while(1){
     schedulers->update_all();

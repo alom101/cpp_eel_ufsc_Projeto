@@ -12,7 +12,7 @@ int HAL_FAKE::digital_read(int digital_pin){
   return 0;
 }
 
-int HAL_FAKE::digital_write(int digital_pin){
+int HAL_FAKE::digital_write(int value, int digital_pin){
   return 0;
 }
 
@@ -33,7 +33,7 @@ int HAL_ATMEGA::digital_read(int digital_pin){
   return 1;
 }
 
-int HAL_ATMEGA::digital_write(int digital_pin){
+int HAL_ATMEGA::digital_write(int value, int digital_pin){
   return 1;
 }
 
@@ -54,7 +54,7 @@ int HAL_ESP32::digital_read(int digital_pin){
   return 1;
 }
 
-int HAL_ESP32::digital_write(int digital_pin){
+int HAL_ESP32::digital_write(int value, int digital_pin){
   return 1;
 }
 
