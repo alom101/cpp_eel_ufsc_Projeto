@@ -2,18 +2,16 @@
 
 
 int main (int argc, char *argv[]) {
-  // Sensor* sensor = new FakeSensor(10.1);
   HAL* hal = new HAL_DEFAULT();
+  DataOutput* output = new PrintOutput();
+
 
   Sensor* sensor_1 = new FakeSensor(hal, 1.0);
-  char nome_do_sensor_1[SENSOR_NAME_LEN] = "Sensor de testes 1";
-  sensor_1->set_sensor_name(nome_do_sensor_1);
+  sensor_1->set_sensor_name("Sensor de testes 1");
 
   Sensor* sensor_2 = new FakeSensor(hal, 2.0);
-  char nome_do_sensor_2[SENSOR_NAME_LEN] = "Sensor de testes 2";
-  sensor_2->set_sensor_name(nome_do_sensor_2);
+  sensor_2->set_sensor_name("Sensor de testes 2");
 
-  DataOutput* output = new PrintOutput();
 
   Scheduler* schedulers = new Scheduler(hal);
   schedulers->schedule(sensor_1, output, 1./2);

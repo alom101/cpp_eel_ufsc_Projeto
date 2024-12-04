@@ -3,6 +3,7 @@
 
 #include <ctime>
 #include <cstdio>
+#include <string>
 #include "config.h"
 
 class Sensor;
@@ -22,6 +23,7 @@ protected:
   char _sensor_type[SENSOR_TYPE_LEN];
   HAL* _hal = 0;
   void set_sensor_type(char* new_type);
+  void set_sensor_type(std::string new_type);
   Sensor();
 public:
   // CORE
@@ -29,6 +31,7 @@ public:
 
   // METADATA
   void set_sensor_name(char* new_name);
+  void set_sensor_name(std::string new_name);
   char* sensor_type();
   char* sensor_name();
 };
@@ -66,6 +69,13 @@ public:
   PrintOutput();
   int save(Measurement data);
 };
+
+class SDCardOutput: public DataOutput{
+public:
+  SDCardOutput();
+  int save(Measurement data);
+};
+
 
 /*************************************************************
  *                    SCHEDULER

@@ -9,7 +9,7 @@ float HAL_FAKE::analog_read(int analog_pin){
 }
 
 int HAL_FAKE::digital_read(int digital_pin){
-  return 1;
+  return 0;
 }
 
 int HAL_FAKE::digital_write(int digital_pin){
@@ -22,8 +22,9 @@ time_t HAL_FAKE::time(){
 
 
 /*************************************************************
- *                        ATMEGA 
+ *                        ATMEGA (ToDo)
 *************************************************************/
+
 float HAL_ATMEGA::analog_read(int analog_pin){
   return 0.0;
 }
@@ -41,8 +42,10 @@ time_t HAL_ATMEGA::time(){
 }
 
 /*************************************************************
- *                        ESP32 
+ *                        ESP32 (ToDo)
 *************************************************************/
+
+
 float HAL_ESP32::analog_read(int analog_pin){
   return 0.0;
 }
