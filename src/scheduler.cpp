@@ -8,7 +8,7 @@ Scheduler::Scheduler(HAL* hal, Sensor* sensor, DataOutput* output, float sample_
   _sensor = sensor;
   _output = output;
   _sample_rate = sample_rate;
-  _next_measurement_time = _hal->time();
+  _last_measurement_time = _hal->time();
 }
 
 Scheduler::Scheduler(HAL* hal){
@@ -16,7 +16,7 @@ Scheduler::Scheduler(HAL* hal){
   _sensor = 0;
   _output = 0;
   _sample_rate = 1;
-  _next_measurement_time = 0;
+  _last_measurement_time = 0;
   _next = nullptr;
 }
 
@@ -29,7 +29,7 @@ Scheduler* Scheduler::get_last_scheduler(){
 }
 
 int Scheduler::is_time_to_run(){
-  return difftime(_hal->time(), _next_measurement_time) >=0;
+  return difftime(_hal->time(), _last_measurement_time) >= 1/_sample_rate;
 }
 
 int Scheduler::is_empty(){
@@ -38,14 +38,13 @@ int Scheduler::is_empty(){
 
 void Scheduler::schedule(Sensor* sensor, DataOutput* output, float sample_rate){
   Scheduler* last_scheduler = get_last_scheduler();
-  _next = new Scheduler(_hal, sensor, output, sample_rate);
+  last_scheduler->_next = new Scheduler(_hal, sensor, output, sample_rate);
 }
+
 void Scheduler::update(){
   if(is_time_to_run() and !is_empty()){
-    printf("UPDATING!\t");
     _output->save(_sensor->read());
-    _next_measurement_time += 1/_sample_rate;
-    printf("\nNEXT UPDATE: %s\n\n", std::ctime(&_next_measurement_time));
+    _last_measurement_time = _hal->time();
   }
 }
 

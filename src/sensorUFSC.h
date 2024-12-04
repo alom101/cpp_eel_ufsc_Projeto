@@ -75,16 +75,16 @@ public:
 class Scheduler{
 private:
   HAL* _hal;
-  Scheduler* _next;
   float _sample_rate;
   Sensor* _sensor;
   DataOutput* _output;
-  time_t _next_measurement_time;
+  time_t _last_measurement_time;
   //utils
   Scheduler* get_last_scheduler();
   int is_time_to_run();
   int is_empty();
 public:
+  Scheduler* _next;
   Scheduler(HAL* hal, Sensor* sensor, DataOutput* output, float sample_rate);
   Scheduler(HAL* hal); // para uso como head da lista (não realiza nenhuma medida)
   void schedule(Sensor* sensor, DataOutput* output, float sample_rate);
