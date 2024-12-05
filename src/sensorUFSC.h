@@ -1,9 +1,9 @@
 #ifndef SENSORUFSC_H
 #define SENSORUFSC_H
 
-#include <ctime>
-#include <cstdio>
-#include <string>
+#include <time.h>
+#include <stdio.h>
+#include <string.h>
 #include "config.h"
 
 class Sensor;
@@ -15,6 +15,22 @@ class HAL;
 #define LOW 0
 #define HIGH 1
 
+#ifdef TARGET_FAKE
+#define HAL_DEFAULT HAL_FAKE
+#endif // TARGET_FAKE
+
+#ifdef TARGET_ESP32
+// #include "esp.h"
+#define HAL_DEFAULT HAL_ESP32
+#endif // TARGET_ESP32
+
+#ifdef TARGET_ATMEGA
+#include "targets/atmega.h"
+#define HAL_DEFAULT HAL_ATMEGA
+#endif // TARGET_ATMEGA
+
+
+
 /*************************************************************
  *                    SENSORES
 *************************************************************/
@@ -25,7 +41,6 @@ protected:
   char _sensor_type[SENSOR_TYPE_LEN];
   HAL* _hal = 0;
   void set_sensor_type(char* new_type);
-  void set_sensor_type(std::string new_type);
   Sensor();
 public:
   // CORE
@@ -33,7 +48,6 @@ public:
 
   // METADATA
   void set_sensor_name(char* new_name);
-  void set_sensor_name(std::string new_name);
   char* sensor_type();
   char* sensor_name();
 };
@@ -157,22 +171,6 @@ public:
   virtual int digital_write(int value, int digital_pin)= 0;
   virtual time_t time() = 0;
 };
-
-// ifdefs
-
-#ifdef TARGET_FAKE
-#define HAL_DEFAULT HAL_FAKE
-#endif // TARGET_FAKE
-
-#ifdef TARGET_ESP32
-// #include "esp.h"
-#define HAL_DEFAULT HAL_ESP32
-#endif // TARGET_ESP32
-
-#ifdef TARGET_ATMEGA
-#define HAL_DEFAULT HAL_ATMEGA
-#endif // TARGET_ATMEGA
-
 
 // Implementações
 class HAL_FAKE: public HAL{

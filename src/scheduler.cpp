@@ -1,6 +1,4 @@
 #include "sensorUFSC.h"
-#include <cstdio>
-#include <ctime>
 
 
 Scheduler::Scheduler(HAL* hal, Sensor* sensor, DataOutput* output, float sample_rate){

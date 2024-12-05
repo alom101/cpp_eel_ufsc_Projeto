@@ -1,6 +1,6 @@
 #ifndef CONFIG_H
 
-#define TARGET_FAKE
+// #define TARGET_FAKE
 // #define TARGET_ESP32
 // #define TARGET_ATMEGA
 

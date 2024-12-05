@@ -1,9 +1,4 @@
-#include "config.h"
 #include "sensorUFSC.h"
-#include <cstdio>
-#include <cstring>
-#include <ctime>
-#include <string>
 
 /*************************************************************
  *                     SENSOR (classe abstrata)
@@ -21,16 +16,8 @@ void Sensor::set_sensor_type(char* new_type){
   strncpy(_sensor_type, new_type, SENSOR_TYPE_LEN);
 }
 
-void Sensor::set_sensor_type(std::string new_type){
-  strncpy(_sensor_type, new_type.c_str(), SENSOR_TYPE_LEN);
-}
-
 void Sensor::set_sensor_name(char* new_name){
   strncpy(_sensor_name, new_name, SENSOR_NAME_LEN);
-}
-
-void Sensor::set_sensor_name(std::string new_name){
-  strncpy(_sensor_name, new_name.c_str(), SENSOR_NAME_LEN);
 }
 
 char* Sensor::sensor_type(){

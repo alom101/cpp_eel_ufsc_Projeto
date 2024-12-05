@@ -1,9 +1,12 @@
 #include "sensorUFSC.h"
-#include <ctime>
 
 /*************************************************************
  *                        FAKE HAL 
 *************************************************************/
+time_t __time(time_t *t){
+  return time(t);
+}
+
 float HAL_FAKE::analog_read(int analog_pin){
   return 1.1;
 }
@@ -17,12 +20,12 @@ int HAL_FAKE::digital_write(int value, int digital_pin){
 }
 
 time_t HAL_FAKE::time(){
-  return std::time(0); // CUIDADO: sem o "std::" ele vira uma função recursiva!!
+  return __time(0); // CUIDADO: sem o "std::" ele vira uma função recursiva!!
 }
 
 
 /*************************************************************
- *                        ATMEGA (ToDo)
+ *                        ATMEGA 
 *************************************************************/
 
 float HAL_ATMEGA::analog_read(int analog_pin){
