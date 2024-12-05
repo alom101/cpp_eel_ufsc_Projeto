@@ -29,14 +29,19 @@ time_t HAL_FAKE::time(){
 *************************************************************/
 
 float HAL_ATMEGA::analog_read(int analog_pin){
+// ToDo
   return 0.0;
 }
 
 int HAL_ATMEGA::digital_read(int digital_pin){
-  return 1;
+  // DDRB = DDRB|(1<<digital_pin);
+  // return (PORTB>>digital_pin)&0x01;
+    return 1;
 }
 
 int HAL_ATMEGA::digital_write(int value, int digital_pin){
+  // DDRB = DDRB|(1<<digital_pin);
+  // PORTB &= (1<<digital_pin);
   return 1;
 }
 
