@@ -20,7 +20,7 @@ class HAL;
 #endif // TARGET_FAKE
 
 #ifdef TARGET_ESP32
-// #include "esp.h"
+#include "targets/esp32.h"
 #define HAL_DEFAULT HAL_ESP32
 #endif // TARGET_ESP32
 
