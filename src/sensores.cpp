@@ -1,4 +1,5 @@
 #include "sensorUFSC.h"
+#include "targets/esp32.h"
 
 /*************************************************************
  *                     SENSOR (classe abstrata)
@@ -85,3 +86,22 @@ Measurement DigitalReadSensor::read(){
   time_t now = _hal->time();
   return Measurement(this, value, now);
 }
+
+
+
+/*************************************************************
+ *                      MPU9250 SENSOR
+*************************************************************/
+MPU9250Sensor::MPU9250Sensor(HAL* hal){
+  char sensor_name[] = "MPU9250";
+  char sensor_type[] = "MPU9250";
+  set_sensor_name(sensor_name);
+  set_sensor_type(sensor_type);
+  _hal = hal;
+
+}
+
+Measurement MPU9250Sensor::read(){
+    return Measurement(this, _value, _hal->time());
+}
+

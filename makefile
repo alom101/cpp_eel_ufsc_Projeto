@@ -9,6 +9,7 @@ atmega:
 
 esp32:
 	#	compilar setando TARGET_ESP32 e removendo o resto
+	#	use a IDE da fabricante para compilar
 
 clean:
 	rm *out *.hex

@@ -79,6 +79,15 @@ public:
   Measurement read();
 };
 
+class MPU9250Sensor: public Sensor{
+protected:
+  float _value;
+public:
+  MPU9250Sensor(HAL* hal);
+  Measurement read();
+};
+
+
 
 
 /*************************************************************
