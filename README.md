@@ -20,6 +20,8 @@ Com o objetivo de minimizar o acoplamento entre software e hardware na programa�
 
 A arquitetura modular proposta permitirá a integração de diferentes tipos de sensores e métodos de armazenamento sem alterações significativas na base do código, tornando-a ideal para cenários onde é essencial integrar sensores e armazenar dados, como em sistemas IoT, automação industrial ou monitoramento ambiental. A utilização da POO facilitará a adição de novos tipos de sensores e formas de armazenar informações sem complicar o sistema, economizando tempo e esforço na manutenção e permitindo o reuso de partes do código em outros projetos. Além disso, a arquitetura proposta permitirá utilizar mais facilmente sensores disponíveis no mercado de forma simples e rápida, reduzindo o esforço necessário para integrar novos dispositivos e melhorando a portabilidade do sistema. Com isso, o projeto contribuirá para a criação de sistemas mais flexíveis, escaláveis e fáceis de manter, minimizando o problema de acoplamento entre software e hardware na programação embarcada.
 
+![ideia_geral](https://github.com/alom101/cpp_eel_ufsc_Projeto/blob/main/docs/ideia_geral.png)
+
 # **Requisitos Minimos**
 
 Para utilizar o sistema por completo, é necessário:
