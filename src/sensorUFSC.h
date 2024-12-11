@@ -193,6 +193,7 @@ public:
 
 class HAL_ATMEGA: public HAL{
 public:
+  HAL_ATMEGA();
   float analog_read(int analog_pin);
   int digital_read(int digital_pin);
   int digital_write(int value, int digital_pin);
@@ -202,6 +203,7 @@ public:
 
 class HAL_ESP32: public HAL{
 public:
+  HAL_ESP32();
   float analog_read(int analog_pin);
   int digital_read(int digital_pin);
   int digital_write(int value, int digital_pin);

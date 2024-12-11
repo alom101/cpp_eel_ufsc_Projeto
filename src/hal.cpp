@@ -27,6 +27,9 @@ time_t HAL_FAKE::time(){
 /*************************************************************
  *                        ATMEGA 
 *************************************************************/
+HAL_ATMEGA::HAL_ATMEGA(){
+
+}
 
 float HAL_ATMEGA::analog_read(int analog_pin){
 // ToDo
@@ -53,6 +56,11 @@ time_t HAL_ATMEGA::time(){
  *                        ESP32 (ToDo)
 *************************************************************/
 
+HAL_ESP32::HAL_ESP32(){
+  #ifdef TARGET_ESP32
+  ESP_ERROR_CHECK(i2c_master_init());
+  #endif //TARGET_ESP32
+}
 
 float HAL_ESP32::analog_read(int analog_pin){
   return 0.0;
