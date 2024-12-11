@@ -1,6 +1,6 @@
-# **Interface de abstração para sensores **
+# **Interface de abstração para sensores**
 
-Projeto realizado para a disciplina de *C++ para embarcados* do curso de *Engenharia Eletrônica* da *Universidade Federal de Santa Catarina* no semestre 2024.2
+Projeto realizado para a disciplina de `C++ para embarcados` do curso de `Engenharia Eletrônica` da `Universidade Federal de Santa Catarina` no semestre 2024.2
 
 Feito por:
 
@@ -10,10 +10,15 @@ Pedro Felipe Bender \- 20150153
 
 
 # **Introdução**
+## **Contextualização**
+A programação embarcada é uma área da engenharia de software que se concentra no desenvolvimento de sistemas computacionais integrados a dispositivos físicos, como robôs, veículos autônomos, sistemas de automação industrial e dispositivos de consumo. Nesse contexto, o software é projetado para interagir diretamente com o hardware do dispositivo, controlando e monitorando suas funcionalidades.
 
-Este projeto tem como objetivo criar uma interface genérica em C++ para a leitura de dados de sensores e envio dessas informações para um dispositivo de armazenamento. A solução será desenvolvida com base nos princípios da Programação Orientada a Objetos (POO), garantindo flexibilidade e modularidade do código. O foco será implementar uma arquitetura modular que permita a integração de diferentes tipos de sensores e métodos de armazenamento sem alterações significativas na base do código.  
-A arquitetura deste projeto será pensada para cenários onde é essencial integrar sensores e armazenar dados, como em sistemas IoT, automação industrial ou monitoramento ambiental. Usar Programação Orientada a Objetos (POO) vai facilitar a adição de novos tipos de sensores e formas de armazenar informações sem complicar o sistema. Isso ajuda a economizar tempo e esforço na manutenção e ainda reaproveitar partes do código em outros projetos.	 Além de permitir utilizar mais facilmente sensores disponíveis no mercado de forma simples e rápida.
+No entanto, um dos principais desafios na programação embarcada é o problema de acoplamento entre software e hardware. O acoplamento refere-se à dependência excessiva entre os componentes de software e hardware, tornando difícil modificar ou substituir um componente sem afetar o outro.
 
+## **Descrição do Projeto**
+Com o objetivo de minimizar o acoplamento entre software e hardware na programação embarcada, este projeto visa criar uma interface genérica em C++ para a leitura de dados de sensores e envio dessas informações para um dispositivo de armazenamento. A solução será desenvolvida com base nos princípios da Programação Orientada a Objetos (POO), garantindo flexibilidade e modularidade do código. Isso permitirá que o sistema seja mais fácil de manter e escalável, reduzindo o acoplamento entre os componentes de software e hardware.
+
+A arquitetura modular proposta permitirá a integração de diferentes tipos de sensores e métodos de armazenamento sem alterações significativas na base do código, tornando-a ideal para cenários onde é essencial integrar sensores e armazenar dados, como em sistemas IoT, automação industrial ou monitoramento ambiental. A utilização da POO facilitará a adição de novos tipos de sensores e formas de armazenar informações sem complicar o sistema, economizando tempo e esforço na manutenção e permitindo o reuso de partes do código em outros projetos. Além disso, a arquitetura proposta permitirá utilizar mais facilmente sensores disponíveis no mercado de forma simples e rápida, reduzindo o esforço necessário para integrar novos dispositivos e melhorando a portabilidade do sistema. Com isso, o projeto contribuirá para a criação de sistemas mais flexíveis, escaláveis e fáceis de manter, minimizando o problema de acoplamento entre software e hardware na programação embarcada.
 
 # **Requisitos Minimos**
 
