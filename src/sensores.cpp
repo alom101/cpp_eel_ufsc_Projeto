@@ -1,5 +1,4 @@
 #include "sensorUFSC.h"
-#include "targets/esp32.h"
 
 /*************************************************************
  *                     SENSOR (classe abstrata)

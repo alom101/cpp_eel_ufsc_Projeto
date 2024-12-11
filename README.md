@@ -1,31 +1,63 @@
-# **Projeto de C++ para Embarcados: Leitura de Sensores e Envio de Dados para Servidor**
+# **Interface de abstração para sensores **
 
-Alunos:
+Projeto realizado para a disciplina de *C++ para embarcados* do curso de *Engenharia Eletrônica* da *Universidade Federal de Santa Catarina* no semestre 2024.2
+
+Feito por:
 
 Arthur Leones Osorio Machado \- 19103415
 
 Pedro Felipe Bender \- 20150153
 
+
 # **Introdução**
 
-Este projeto tem como objetivo criar uma interface genérica em C++ para a leitura de dados de sensores e envio dessas informações para um servidor ou dispositivo de armazenamento. A solução será desenvolvida com base nos princípios da Programação Orientada a Objetos (POO), garantindo flexibilidade e modularidade do código. O foco será implementar uma arquitetura modular que permita a integração de diferentes tipos de sensores e métodos de armazenamento sem alterações significativas na base do código.  
-A base do projeto serão os microcontroladores da familía ESP32 e ESP8266 que já contam com WiFi e bluetooth, além do raspberry pi pico e stm32F411 que irão contar com o wifi do ESP8266 ou ESP32 para operarem enviando dados via rede.  
+Este projeto tem como objetivo criar uma interface genérica em C++ para a leitura de dados de sensores e envio dessas informações para um dispositivo de armazenamento. A solução será desenvolvida com base nos princípios da Programação Orientada a Objetos (POO), garantindo flexibilidade e modularidade do código. O foco será implementar uma arquitetura modular que permita a integração de diferentes tipos de sensores e métodos de armazenamento sem alterações significativas na base do código.  
 A arquitetura deste projeto será pensada para cenários onde é essencial integrar sensores e armazenar dados, como em sistemas IoT, automação industrial ou monitoramento ambiental. Usar Programação Orientada a Objetos (POO) vai facilitar a adição de novos tipos de sensores e formas de armazenar informações sem complicar o sistema. Isso ajuda a economizar tempo e esforço na manutenção e ainda reaproveitar partes do código em outros projetos.	 Além de permitir utilizar mais facilmente sensores disponíveis no mercado de forma simples e rápida.
 
-# **Requisitos**
 
-Para este trabalho, focamos em criar um sistema simples que coleta dados de sensores e envia as informações para um servidor ou dispositivo de armazenamento. Os principais requisitos do sistema são:
+# **Requisitos Minimos**
 
-* **Leitura de sensores**: Identificar o sensor ativo e ler os dados gerados, fazendo um pré tratamento e os enviando na taxa definida.  
-* **Exibição de dados**: Mostrar os valores lidos e a identificação do sensor em um pequeno display LCD, fornecendo feedback visual imediato.  
-* **Envio de dados via Wi-Fi**: Transmitir os dados coletados por meio de uma rede Wi-Fi, utilizando os microcontroladores ESP32 e ESP8266.  
-* **Suporte a múltiplos microcontroladores**: Integrar o sistema com diferentes controladores, como Raspberry Pi Pico e STM32F411, para maior flexibilidade.  
-* **Modularidade**: Facilitar a substituição ou adição de sensores sem alterar significativamente o sistema.  
-* **Servidor base:** Será utilizado preliminarmente o influxdb para armazenamento dos dados de exibição em uma Dashboard para análise dos dados.
+Para utilizar o sistema por completo, é necessário:
+* Sensor: Algum sensor deve ser configurado utilizando o mecanismo de herança da classe Sensor ou de alguma das classes filha;
+* Microcontrolador: Algum microcontrolador deve ser configurado a partir da herança da classe HAL, implementando os métodos para interação, com o hardware;
+* Saida de dados: Alguma saida de dados deve ser configurada a partir da herança da classe DataOutput, esta saida pode ser desde um ´printf´ a um banco de dados na rede.
 
-### **Componentes Utilizados:**
 
-* **Microcontroladores**:  
+# **Objetivos**
+
+* [CONCLUIDO] Desenvolvimento de uma classe Sensor que abstraia os detalhes de cada sensor, permitindo que o software seja desenvolvido utilizando uma interface em comum para obtenção de dados;  
+* [CONCLUIDO] Desenvolvimento de uma classe DataOutput que abstraia os dispositivos de armazenamento e servidores externos, permitindo sua substituição sem mudanças de código;  
+* [NECESSITA VALIDAÇÃO] Desenvolvimento de um software independente do hardware, permitindo a utilização de diferentes microcontroladores (ESP32, ESP8266, Raspberry Pi Pico W) com minima modificação.  
+* [EM PROGRESSO] Implementação de classes para sensores reais;
+* [EM PROGRESSO] Implementação de classes para hardwares reais;
+* [CONCLUIDO] Abstração da relação sensor-armazenamento utilizando classes abstratas;  
+ 
+
+# **Compilação**
+
+A compilação do cogido deve ser feita no compilador adequado para cada hardware. Alguns hardwares específicios já estão configurados no arquivo `makefile` para facil compilação. Abaixo está a descrição da compilação de cada hardware.
+
+**Atenção**: em caso de erro, verifique o arquivo `config.h` e certifique-se que os defines TARGET_... se encontram comentados.
+
+
+## Linux
+Para compilar para Linux, basta utilizar o comando:
+```bash
+make
+```
+
+## ATMEGA328P
+
+
+## ESP32
+
+
+
+
+
+### **Componentes Utilizados :**
+
+* **Microcontrolador**:  
   * *Raspberry Pi Pico*: Atua como unidade de controle para a coleta de dados.  
   * *STM32F411*: Alternativa ao Pico para um sistema mais genérico.  
   * *ESP32-S*: Gerencia a coleta de dados e envia as informações diretamente para a rede.  
