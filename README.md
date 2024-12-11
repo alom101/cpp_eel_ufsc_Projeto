@@ -72,8 +72,23 @@ make atmega
 Saída: `atmega.out` 
 
 ## ESP32
-Requisitos: `Expressif-IDE`
+Requisitos: `Espressif-IDE`
 
+Para compilar para o ESP32 foi utilizado a Espressif-IDE com o compilador idf.
+
+Foi necessário fazer alterações no CMAKElist para configurar os arquivos que serão compilados.
+
+Preparação: Organize o código no diretório main/ e configure dependências no arquivo CMakeLists.txt.
+
+Configuração: Use Project > SDK Configuration Editor no menu da IDE para ajustar opções do ESP32 (como pinos e frequência do I2C).
+
+Compilação: Clique em Build Project para compilar o código e gerar os binários.
+
+Gravação: Use Run > Flash para gravar o firmware no ESP32.
+
+Monitoramento: Após a gravação, escolha Run > Start Monitor para visualizar os logs de execução.
+
+A Espressif IDE gerencia automaticamente a configuração e o build com base nos arquivos do projeto.
 
 
 
